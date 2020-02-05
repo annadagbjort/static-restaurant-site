@@ -2,7 +2,7 @@
 
 header {
     background-color: rgb(0, 0, 0, 0.6);
-    padding: 0 0 10vh 2vw;
+    padding: 0 0 0 2vw;
 }
 
 body {
@@ -84,14 +84,16 @@ article.course {
 
 }
 
-article > figure {
+figure {
     order: -1;
     align-self: center;
     width: minmax(300px, 1fr);
 }
 
+
+
 .price {
-    text-align: right;
+    text-align: center;
 }
 
 h3 {
@@ -107,3 +109,41 @@ footer {
     background-color: black;
 
 }
+
+/*extras*/
+
+
+.soldOutImg {
+    position:absolute;
+    width: max(250px);
+    padding-top: 100px;
+    align-self: center;
+ }
+
+.soldOut {
+    opacity: 0.5;
+}
+
+
+
+/*
+    align-self: center;
+    width: minmax(100px, 10px);
+*/
+}
+
+.discount {
+    text-decoration: line-through;
+}
+
+.vegetarian {
+    color: green;
+/*    order: -1;*/
+/*    margin: 0px;*/
+/*    padding-right: 0px;*/
+}
+
+
+
+
+
