@@ -41,7 +41,7 @@ function showSingleDish(dish) {
 
     clone.querySelector("img").src= smallImg;
 
-const parent = document.querySelector("main");
+const parent = document.querySelector(".menu");
     parent.appendChild(clone);
 
 

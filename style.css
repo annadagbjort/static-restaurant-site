@@ -90,6 +90,10 @@ figure {
     width: minmax(300px, 1fr);
 }
 
+.menuImg {
+    width: 100%;
+}
+
 
 
 .price {
