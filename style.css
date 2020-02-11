@@ -8,7 +8,9 @@ header {
 body {
     background-image: url(background.jpg);
     /*    opacity: 0.6;*/
-    font-family: noteworthy;
+/*    font-family: noteworthy;*/
+    font-family: avenir;
+
     margin: 0;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -26,11 +28,16 @@ h2,
 h3 {
     font-weight: normal;
     color: aliceblue;
+    text-transform:capitalize;
+    font-family: futura;
 }
 
-h1 {
+h1, h2 {
     margin-left: 5vh;
+    font-size: 28px;
+    margin-bottom:auto;
 }
+
 
 p {
     font-style: bold;
@@ -55,10 +62,12 @@ article.course {
 nav {
         padding-right: 5vw;
         float:right;
+
 }
 
 ul {
     display: flex;
+
 }
 
 a {
@@ -71,8 +80,10 @@ li {
 }
 
 li a {
-    color: aliceblue;
+    color: white;
     font-weight: normal;
+    margin: 6px;
+    text-transform:capitalize;
 }
 
 .menu {
@@ -88,7 +99,6 @@ h2 {
 article.course {
     display: flex;
     flex-flow: column;
-
 }
 
 figure {
@@ -143,8 +153,9 @@ footer {
 */
 }
 
-.discount {
+.discountPrice {
     text-decoration: line-through;
+    text-align: center;
 }
 
 .vegetarian {

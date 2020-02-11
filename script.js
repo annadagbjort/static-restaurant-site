@@ -5,6 +5,13 @@ fetch("https://kea-alt-del.dk/t5/api/categories")
 function createCategories(data) {
     //    console.log(data)
     data.forEach(function (oneCat) {
+
+        const a = document.createElement("a");
+        a.setAttribute("href", `#${oneCat}`)
+        a.textContent = oneCat;
+        document.querySelector("nav>ul>li").appendChild(a);
+
+
         const section = document.createElement("section");
         section.id = oneCat;
         section.classList.add("menu")
@@ -13,8 +20,9 @@ function createCategories(data) {
         section.appendChild(h2);
 
         document.querySelector("main").appendChild(section);
-        getProducts();
+
     })
+    getProducts();
 }
 
 function getProducts() {
@@ -29,7 +37,7 @@ function getProducts() {
 
 
 function showData(jsonData) {
-console.log(jsonData);
+    console.log(jsonData);
     jsonData.forEach(showSingleDish);
 
 
@@ -48,11 +56,14 @@ function showSingleDish(dish) {
     //    clone.querySelector(".fullPrice").textContent = dish.price;
 
     if (dish.discount) { //on sale
+
         clone.querySelector(".fullPrice").textContent = dish.price;
 
         const newPrice = Math.round(dish.price - dish.price * dish.discount / 100);
 
         clone.querySelector(".fullPrice").textContent = newPrice;
+
+        clone.querySelector(".fullPrice").textContent = dish.price
 
     } else { //not on discount
         clone.querySelector(".discountPrice").remove()
