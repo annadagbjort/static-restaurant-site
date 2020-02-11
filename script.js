@@ -1,17 +1,37 @@
-fetch("https://kea-alt-del.dk/t5/api/productlist")
-    .then(function (response) {
-        return response.json()
-    })
-    .then(function (data) {
-        showData(data)
-    })
+fetch("https://kea-alt-del.dk/t5/api/categories")
+    .then(res => res.json())
+    .then(createCategories)
 
+function createCategories(data) {
+    //    console.log(data)
+    data.forEach(function (oneCat) {
+        const section = document.createElement("section");
+        section.id = oneCat;
+        section.classList.add("menu")
+        const h2 = document.createElement("h2");
+        h2.textContent = oneCat;
+        section.appendChild(h2);
+
+        document.querySelector("main").appendChild(section);
+        getProducts();
+    })
+}
+
+function getProducts() {
+    fetch("https://kea-alt-del.dk/t5/api/productlist")
+        .then(function (response) {
+            return response.json()
+        })
+        .then(function (data) {
+            showData(data)
+        })
+}
 
 
 function showData(jsonData) {
-
+console.log(jsonData);
     jsonData.forEach(showSingleDish);
-    console.log(jsonData);
+
 
 
 }
@@ -47,7 +67,7 @@ function showSingleDish(dish) {
 
 
     const imageName = dish.image; // this would be dynamic
-    console.log(imageName)
+    //    console.log(imageName)
 
     const base = "https://kea-alt-del.dk/t5/site/imgs/";
 
@@ -64,10 +84,11 @@ function showSingleDish(dish) {
 
 
 
+    console.log(`#${dish.category}`)
+    document.querySelector(`#${dish.category}`).appendChild(clone)
 
-
-    const parent = document.querySelector(".menu");
-    parent.appendChild(clone);
+    //    const parent = document.querySelector(".menu");
+    //    parent.appendChild(clone);
 
 
 
