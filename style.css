@@ -6,17 +6,24 @@ header {
 }
 
 body {
+/*
     background-image: url(background.jpg);
-    /*    opacity: 0.6;*/
-/*    font-family: noteworthy;*/
-    font-family: avenir;
-
-    margin: 0;
+    
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-blend-mode: lighten;
+*/
+    /*    opacity: 0.6;*/
+    /*    font-family: noteworthy;*/
+/*    background: black;*/
+    
+        margin: 0;
+    font-family: avenir;
+}
 
+main {
+    background: grey;
 }
 
 main {
@@ -28,14 +35,15 @@ h2,
 h3 {
     font-weight: normal;
     color: aliceblue;
-    text-transform:capitalize;
+    text-transform: capitalize;
     font-family: futura;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin-left: 5vh;
     font-size: 28px;
-    margin-bottom:auto;
+    margin-bottom: auto;
 }
 
 
@@ -44,9 +52,14 @@ p {
     color: aliceblue;
 }
 
+.fullPrice {
+    font-size: 20px;
+}
+
+
 .logo {
     padding: 15px 0px 0px 15px;
-    width:300px
+    width: 300px
 }
 
 
@@ -57,11 +70,12 @@ article.course {
 
 
 
+
 /* Navigation bar */
 
 nav {
-        padding-right: 5vw;
-        float:right;
+    padding-right: 5vw;
+    float: right;
 
 }
 
@@ -83,7 +97,7 @@ li a {
     color: white;
     font-weight: normal;
     margin: 6px;
-    text-transform:capitalize;
+    text-transform: capitalize;
 }
 
 .menu {
@@ -114,7 +128,7 @@ figure {
 
 
 .price {
-    text-align: center;
+    text-align: right;
 }
 
 h3 {
@@ -131,31 +145,38 @@ footer {
 
 }
 
+button {
+    margin-top: auto;
+}
 /*extras*/
+
+
+
+
+.soldOut {
+    opacity: 0.3;
+    color:lightgray;
+}
 
 
 .soldOutImg {
     position: absolute;
     width: max(250px);
-    padding-top: 100px;
+    padding-top: 150px;
     align-self: center;
+    opacity: 1;
 }
-
-.soldOut {
-    opacity: 0.5;
-}
-
 
 
 /*
     align-self: center;
     width: minmax(100px, 10px);
 */
-}
 
 .discountPrice {
     text-decoration: line-through;
-    text-align: center;
+    color:lightgray;
+    
 }
 
 .vegetarian {
@@ -165,6 +186,34 @@ footer {
     /*    padding-right: 0px;*/
 }
 
+
+.hide {
+  display: none;
+}
+
+.modal-background {
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border: 1px solid #7c1f17;
+    margin: 1em;
+    padding: 2em;
+}
+
+.modal-name, .modal-description{
+    color: black;
+}
+
+
+
 @media only screen and (max-width:920px) {
 
     nav {
@@ -173,16 +222,17 @@ footer {
         margin-right: auto;
         margin-left: auto;
     }
-header {
-    padding: 0;
-    display: grid;
-}
 
-.logo {
-    margin-right: auto;
+    header {
+        padding: 0;
+        display: grid;
+    }
+
+    .logo {
+        margin-right: auto;
         margin-left: auto;
-    width:300px
-}
+        width: 300px
+    }
 
 
 

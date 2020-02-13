@@ -1,3 +1,15 @@
+const modal = document.querySelector(".modal-background");
+modal.addEventListener("click", (e) => {
+    if (e.target.className === "modal-background")
+        modal.classList.add("hide");
+});
+
+
+
+
+
+
+
 fetch("https://kea-alt-del.dk/t5/api/categories")
     .then(res => res.json())
     .then(createCategories)
@@ -37,11 +49,8 @@ function getProducts() {
 
 
 function showData(jsonData) {
-    console.log(jsonData);
+    //    console.log(jsonData);
     jsonData.forEach(showSingleDish);
-
-
-
 }
 
 
@@ -50,7 +59,6 @@ function showSingleDish(dish) {
     const clone = template.cloneNode(true);
 
     clone.querySelector("h3").textContent = dish.name;
-
     clone.querySelector(".description").textContent = dish.shortdescription;
 
     //    clone.querySelector(".fullPrice").textContent = dish.price;
@@ -63,14 +71,20 @@ function showSingleDish(dish) {
 
         clone.querySelector(".fullPrice").textContent = newPrice;
 
-        clone.querySelector(".fullPrice").textContent = dish.price
+        clone.querySelector(".discountPrice").textContent = dish.price
 
     } else { //not on discount
         clone.querySelector(".discountPrice").remove()
+        clone.querySelector(".discount").remove()
         clone.querySelector(".fullPrice").textContent = dish.price
     }
 
+    clone.querySelector("button").addEventListener("click", () => {
 
+        fetch(`https://kea-alt-del.dk/t5/api/product?id=${dish.id}`)
+            .then(res => res.json())
+            .then(showDetails);
+    });
 
 
 
@@ -92,10 +106,56 @@ function showSingleDish(dish) {
 
 
 
+    //    console.log(`#${dish.category}`)
+
+
+    function showDetails(data) {
+        const newPrice = Math.round(data.price - data.price * data.discount / 100);
+
+
+        modal.querySelector(".modal-name").textContent = data.name;
+
+        modal.querySelector(".modal-description").textContent = data.longdescription;
+        modal.querySelector(".modal-price").textContent = newPrice;
+        //    modal.querySelector(".modal-price").textContent = data.vprice;
+
+        //...
+        modal.querySelector(".modal-image").src = mediumImg;
+        modal.classList.remove("hide");
+    }
 
 
 
-    console.log(`#${dish.category}`)
+    if (dish.soldout == true) {
+
+        console.log("Sold Out");
+
+                clone.querySelector("p").classList.add("soldOut");
+                clone.querySelector(".course h3").classList.add("soldOut");
+
+                clone.querySelector(".course button").classList.add("soldOut");
+
+                clone.querySelector(".course .menuImg").classList.add("soldOut");
+
+                clone.querySelector(".course .price").classList.add("soldOut");
+
+
+        clone.querySelector(".soldOutImg").classList.remove("hide");
+
+
+
+
+
+    } else if (dish.soldout == false) {
+        console.log("NOT sold out");
+
+
+
+    }
+
+
+
+
     document.querySelector(`#${dish.category}`).appendChild(clone)
 
     //    const parent = document.querySelector(".menu");
