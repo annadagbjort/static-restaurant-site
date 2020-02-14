@@ -49,7 +49,7 @@ function getProducts() {
 
 
 function showData(jsonData) {
-    //    console.log(jsonData);
+        console.log(jsonData);
     jsonData.forEach(showSingleDish);
 }
 
@@ -130,28 +130,34 @@ function showSingleDish(dish) {
 
         console.log("Sold Out");
 
-                clone.querySelector("p").classList.add("soldOut");
-                clone.querySelector(".course h3").classList.add("soldOut");
+        clone.querySelector("p").classList.add("soldOut");
+        clone.querySelector(".course h3").classList.add("soldOut");
 
-                clone.querySelector(".course button").classList.add("soldOut");
+        clone.querySelector(".course button").classList.add("soldOut");
 
-                clone.querySelector(".course .menuImg").classList.add("soldOut");
+        clone.querySelector(".course .menuImg").classList.add("soldOut");
 
-                clone.querySelector(".course .price").classList.add("soldOut");
-
-
+        clone.querySelector(".course .price").classList.add("soldOut");
         clone.querySelector(".soldOutImg").classList.remove("hide");
+    }
 
 
 
+    if (dish.vegetarian == true) {
+        console.log("Vegetarian!");
+        clone.querySelector(".veggieImg").classList.remove("hide");
 
+        if (dish.category == "drinks"){ // no veggie symbol on drinks
+            clone.querySelector(".veggieImg").classList.add("hide");
+            }
 
-    } else if (dish.soldout == false) {
-        console.log("NOT sold out");
-
-
+        if (dish.soldout == true & dish.vegetarian == true)
+            clone.querySelector(".veggieImg").classList.add("soldOut");
 
     }
+
+
+
 
 
 

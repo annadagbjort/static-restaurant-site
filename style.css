@@ -115,7 +115,7 @@ article.course {
     flex-flow: column;
 }
 
-figure {
+figure.courseImg {
     order: -1;
     align-self: center;
     width: minmax(300px, 1fr);
@@ -150,7 +150,14 @@ button {
 }
 /*extras*/
 
-
+.veggieImg {
+    position: absolute;
+    width: max(50px);
+    padding-top: 10px;
+    padding-left: 6px;
+    align-self: left;
+    opacity: 0.9;
+}
 
 
 .soldOut {
@@ -166,6 +173,7 @@ button {
     align-self: center;
     opacity: 1;
 }
+
 
 
 /*
@@ -204,14 +212,29 @@ button {
 .modal-content {
     background-color: #fefefe;
     border: 1px solid #7c1f17;
-    margin: 1em;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10vh;
     padding: 2em;
+    width:80vw;
 }
 
 .modal-name, .modal-description{
     color: black;
 }
 
+.modal-figure {
+    width:40vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.modal-content {
+
+/*
+
+*/
+}
 
 
 @media only screen and (max-width:920px) {
