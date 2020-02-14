@@ -49,7 +49,7 @@ function getProducts() {
 
 
 function showData(jsonData) {
-        console.log(jsonData);
+    console.log(jsonData);
     jsonData.forEach(showSingleDish);
 }
 
@@ -117,20 +117,39 @@ function showSingleDish(dish) {
 
         modal.querySelector(".modal-description").textContent = data.longdescription;
         modal.querySelector(".modal-price").textContent = newPrice;
-        //    modal.querySelector(".modal-price").textContent = data.vprice;
 
-        //...
+        modal.querySelector(".modal-alcohol").textContent = data.alcohol;
+
+        if (dish.alcohol) {
+            modal.querySelector(".modal-alc").classList.remove("hide")
+
+            console.log("Alcohol")
+        }
+        else {
+            modal.querySelector(".modal-alc").classList.add("hide")
+        }
+
+
         modal.querySelector(".modal-image").src = mediumImg;
         modal.classList.remove("hide");
+
+        if (data.longdescription == false) {
+            modal.querySelector(".modal-description").textContent = data.shortdescription;
+        }
+
+
     }
+
+
 
 
 
     if (dish.soldout == true) {
 
-        console.log("Sold Out");
+        //        console.log("Sold Out");
 
         clone.querySelector("p").classList.add("soldOut");
+
         clone.querySelector(".course h3").classList.add("soldOut");
 
         clone.querySelector(".course button").classList.add("soldOut");
@@ -144,17 +163,19 @@ function showSingleDish(dish) {
 
 
     if (dish.vegetarian == true) {
-        console.log("Vegetarian!");
+        //        console.log("Vegetarian!");
+
         clone.querySelector(".veggieImg").classList.remove("hide");
 
-        if (dish.category == "drinks"){ // no veggie symbol on drinks
+        if (dish.category == "drinks") { // no veggie symbol on drinks
             clone.querySelector(".veggieImg").classList.add("hide");
-            }
+        }
 
         if (dish.soldout == true & dish.vegetarian == true)
             clone.querySelector(".veggieImg").classList.add("soldOut");
 
     }
+
 
 
 
@@ -169,4 +190,32 @@ function showSingleDish(dish) {
 
 
 
+}
+
+
+
+// To the top
+
+const myBtn = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+    scrollFunction()
+};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        myBtn.style.display = "block";
+    } else {
+        myBtn.style.display = "none";
+    }
+    if (modal.classList.contains("hide") == false) {
+        myBtn.style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
